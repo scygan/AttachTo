@@ -2,7 +2,7 @@
 // MUST match guids.h
 using System;
 
-namespace Whut.AttachTo
+namespace scygan.AttachToolbar
 {
     public static class GuidList
     {

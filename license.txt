@@ -1,5 +1,6 @@
 The MIT License (MIT)
 
+Copyright (c) 2013 Slawomir Cygan, https://github.com/scygan/AttachToolbar
 Copyright (c) 2012 Whut, https://github.com/whut/AttachTo
 
 Permission is hereby granted, free of charge, to any person obtaining

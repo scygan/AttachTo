@@ -1,3 +1,7 @@
+AttachToolbar v 1.0.0
+  - First release based on AttachTo project
+  - countless changes
+
 AttachTo v1.0.1 - 2012-02-08
  - Fixed that show/hide menu commands where not applied immediately after Visual Studio restart
  - Added attaching also to nunit-console.exe process, and x86 counterparts of all NUnit processes

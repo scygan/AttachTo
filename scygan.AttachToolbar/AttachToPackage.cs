@@ -6,7 +6,7 @@ using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 
-namespace Whut.AttachTo
+namespace scygan.AttachToolbar
 {
     //// This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is a package.
     [PackageRegistration(UseManagedResourcesOnly = true)]
@@ -15,7 +15,7 @@ namespace Whut.AttachTo
     //// This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.guidAttachToPkgString)]
-    [ProvideOptionPage(typeof(GeneralOptionsPage), "Whut.AttachTo", "General", 110, 120, false)]
+    [ProvideOptionPage(typeof(GeneralOptionsPage), "scygan.AttachToolbar", "General", 110, 120, false)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string)]
     public sealed class AttachToPackage : Package

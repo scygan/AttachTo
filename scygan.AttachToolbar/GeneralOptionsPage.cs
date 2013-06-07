@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Microsoft.VisualStudio.Shell;
 
-namespace Whut.AttachTo
+namespace scygan.AttachToolbar
 {
     public class GeneralOptionsPage : DialogPage
     {

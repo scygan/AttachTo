@@ -1,7 +1,7 @@
 ﻿// PkgCmdID.cs
 // MUST match PkgCmdID.h
 
-namespace Whut.AttachTo
+namespace scygan.AttachToolbar
 {
     public static class PkgCmdIDList
     {

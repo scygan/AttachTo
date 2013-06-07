@@ -26,6 +26,17 @@
   <!--The Commands section is where we the commands, menus and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
   <Commands package="guidAttachToPkg">
+
+    <Menus>
+      <Menu guid="guidAttachToolbarCmdSet" id="Toolbar" type="Toolbar" >
+        <CommandFlag>DefaultDocked</CommandFlag>
+        <Strings>
+          <ButtonText>Attach To... Toolbar</ButtonText>
+          <CommandName>Attach To... Toolbar</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+    
     <!-- Inside this section we have different sub-sections: one for the menus, another  
     for the menu groups, one for the buttons (the actual commands), one for the combos 
     and the last one for the bitmaps used. Each element is identified by a command id that  
@@ -39,9 +50,11 @@
          group as the part of a menu contained between two lines. The parent of a group 
          must be a menu. -->
     <Groups>
-      <Group guid="guidAttachToCmdSet" id="WhutAttachToMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+
+      <Group guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" priority="0x0000">
+        <Parent guid="guidAttachToolbarCmdSet" id="Toolbar"/>
       </Group>
+      
     </Groups>
     
     <!--Buttons section. -->
@@ -55,8 +68,8 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node or set it to <Icon guid="guidOfficeIcon" id="msotcidNoIcon" /> -->
-      <Button guid="guidAttachToCmdSet" id="cmdidWhutAttachToIIS" priority="0x0100" type="Button">
-        <Parent guid="guidAttachToCmdSet" id="WhutAttachToMenuGroup" />
+      <Button guid="guidAttachToolbarCmdSet" id="cmdidWhutAttachToIIS" priority="0x0100" type="Button">
+        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -65,8 +78,8 @@
         </Strings>
       </Button>
       
-      <Button guid="guidAttachToCmdSet" id="cmdidWhutAttachToIISExpress" priority="0x0100" type="Button">
-        <Parent guid="guidAttachToCmdSet" id="WhutAttachToMenuGroup" />
+      <Button guid="guidAttachToolbarCmdSet" id="cmdidWhutAttachToIISExpress" priority="0x0100" type="Button">
+        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -75,8 +88,8 @@
         </Strings>
       </Button>
       
-      <Button guid="guidAttachToCmdSet" id="cmdidWhutAttachToNUnit" priority="0x0100" type="Button">
-        <Parent guid="guidAttachToCmdSet" id="WhutAttachToMenuGroup" />
+      <Button guid="guidAttachToolbarCmdSet" id="cmdidWhutAttachToNUnit" priority="0x0100" type="Button">
+        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -101,12 +114,16 @@
     <!-- This is the package guid. -->
     <GuidSymbol name="guidAttachToPkg" value="{8d6080f0-7276-44d7-8dc4-6378fb6ce225}" />
     
-    <!-- This is the guid used to group the menu commands together -->
-    <GuidSymbol name="guidAttachToCmdSet" value="{16e2ac5c-ec3d-4ff1-a237-11ccef54fe0f}">
-      <IDSymbol name="WhutAttachToMenuGroup" value="0x1020" />
+
+    <GuidSymbol name="guidAttachToolbarCmdSet" value="{00680076-59CC-4238-A798-693D673602AC}">
+      <IDSymbol name="Toolbar" value="0x1000" />
+      <IDSymbol name="AttachToolbarGroup" value="0x1050" />
+
+
       <IDSymbol name="cmdidWhutAttachToIIS" value="0x0100" />
       <IDSymbol name="cmdidWhutAttachToIISExpress" value="0x0101" />
       <IDSymbol name="cmdidWhutAttachToNUnit" value="0x0102" />
+      
     </GuidSymbol>
     
     <GuidSymbol name="guidImages" value="{7cecfc21-6262-422a-93dd-223db26a763c}" >
