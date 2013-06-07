@@ -28,11 +28,12 @@
   <Commands package="guidAttachToPkg">
 
     <Menus>
-      <Menu guid="guidAttachToolbarCmdSet" id="Toolbar" type="Toolbar" >
+      <Menu guid="guidAttachToolbarCmdSet" id="Toolbar" type="Toolbar" priority="0x0010" >
+        <Parent guid="guidAttachToolbarCmdSet" id="0"/>
         <CommandFlag>DefaultDocked</CommandFlag>
         <Strings>
-          <ButtonText>Attach To... Toolbar</ButtonText>
-          <CommandName>Attach To... Toolbar</CommandName>
+          <ButtonText>Attach To... </ButtonText>
+          <CommandName>Attach To... </CommandName>
         </Strings>
       </Menu>
     </Menus>
@@ -56,6 +57,28 @@
       </Group>
       
     </Groups>
+
+
+    <Combos>
+
+      <Combo guid="guidAttachToolbarCmdSet" id="cmdidTransportCombo" priority="0x0010" type="DropDownCombo"
+
+        defaultWidth="130" idCommandList="cmdidTransportComboGetList">
+
+        <Parent guid="guidAttachToolbarCmdSet" id="Toolbar"/>
+
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+
+        <Strings>
+          <MenuText>DropDown Combo: </MenuText>
+          <ButtonText>DropDown Combo</ButtonText>
+          <ToolTipText>Select String</ToolTipText>
+          <CanonicalName>DropDown Combo</CanonicalName>
+          <CommandName>DropDown Combo</CommandName>
+        </Strings>
+      </Combo>
+    </Combos>
     
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button 
@@ -123,7 +146,9 @@
       <IDSymbol name="cmdidWhutAttachToIIS" value="0x0100" />
       <IDSymbol name="cmdidWhutAttachToIISExpress" value="0x0101" />
       <IDSymbol name="cmdidWhutAttachToNUnit" value="0x0102" />
-      
+      <IDSymbol name="cmdidTransportCombo" value="0x103"/>
+      <IDSymbol name="cmdidTransportComboGetList" value="0x104"/>
+
     </GuidSymbol>
     
     <GuidSymbol name="guidImages" value="{7cecfc21-6262-422a-93dd-223db26a763c}" >
