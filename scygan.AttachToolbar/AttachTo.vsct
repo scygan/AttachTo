@@ -62,22 +62,50 @@
     <Combos>
 
       <Combo guid="guidAttachToolbarCmdSet" id="cmdidTransportCombo" priority="0x0010" type="DropDownCombo"
-
         defaultWidth="130" idCommandList="cmdidTransportComboGetList">
-
-        <Parent guid="guidAttachToolbarCmdSet" id="Toolbar"/>
-
+        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <CommandFlag>IconAndText</CommandFlag>
         <CommandFlag>CommandWellOnly</CommandFlag>
-
         <Strings>
-          <MenuText>DropDown Combo: </MenuText>
-          <ButtonText>DropDown Combo</ButtonText>
-          <ToolTipText>Select String</ToolTipText>
-          <CanonicalName>DropDown Combo</CanonicalName>
-          <CommandName>DropDown Combo</CommandName>
+          <MenuText>Transport: </MenuText>
+          <ButtonText>Transport(1)</ButtonText>
+          <ToolTipText>Select transport string</ToolTipText>
+          <CanonicalName>Transport Combo</CanonicalName>
+          <CommandName>Transport Combo</CommandName>
         </Strings>
       </Combo>
+
+      <Combo guid="guidAttachToolbarCmdSet" id="cmdidQualifierCombo" priority="0x0010" type="MRUCombo"
+       defaultWidth="130" idCommandList="0">
+        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <CommandFlag>NoAutoComplete</CommandFlag>
+        <CommandFlag>CaseSensitive</CommandFlag>
+        <Strings>
+          <MenuText>Qualifier: </MenuText>
+          <ButtonText>Qualifier</ButtonText>
+          <ToolTipText>Select qualifier string</ToolTipText>
+          <CanonicalName>Qualifier Combo</CanonicalName>
+          <CommandName>Qualifier Combo</CommandName>
+        </Strings>
+      </Combo>
+
+      <Combo guid="guidAttachToolbarCmdSet" id="cmdidProcessesCombo" priority="0x0010" type="DropDownCombo"
+       defaultWidth="130" idCommandList="cmdidProcessesComboGetList">
+        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <MenuText>Process: </MenuText>
+          <ButtonText>Process</ButtonText>
+          <ToolTipText>Select or enter process name</ToolTipText>
+          <CanonicalName>Process Combo</CanonicalName>
+          <CommandName>Process Combo</CommandName>
+        </Strings>
+      </Combo>
+      
+      
     </Combos>
     
     <!--Buttons section. -->
@@ -91,33 +119,13 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node or set it to <Icon guid="guidOfficeIcon" id="msotcidNoIcon" /> -->
-      <Button guid="guidAttachToolbarCmdSet" id="cmdidWhutAttachToIIS" priority="0x0100" type="Button">
+      <Button guid="guidAttachToolbarCmdSet" id="cmdidAttach" priority="0x0100" type="Button">
         <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <CommandName>cmdidWhutAttachToIIS</CommandName>
-          <ButtonText>Attach to IIS</ButtonText>
-        </Strings>
-      </Button>
-      
-      <Button guid="guidAttachToolbarCmdSet" id="cmdidWhutAttachToIISExpress" priority="0x0100" type="Button">
-        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <CommandName>cmdidWhutAttachToIISExpress</CommandName>
-          <ButtonText>Attach to IIS Express</ButtonText>
-        </Strings>
-      </Button>
-      
-      <Button guid="guidAttachToolbarCmdSet" id="cmdidWhutAttachToNUnit" priority="0x0100" type="Button">
-        <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <Strings>
-          <CommandName>cmdidWhutAttachToNUnit</CommandName>
-          <ButtonText>Attach to NUnit</ButtonText>
+          <CommandName>cmdidAttach</CommandName>
+          <ButtonText>Attach</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -142,12 +150,12 @@
       <IDSymbol name="Toolbar" value="0x1000" />
       <IDSymbol name="AttachToolbarGroup" value="0x1050" />
 
-
-      <IDSymbol name="cmdidWhutAttachToIIS" value="0x0100" />
-      <IDSymbol name="cmdidWhutAttachToIISExpress" value="0x0101" />
-      <IDSymbol name="cmdidWhutAttachToNUnit" value="0x0102" />
-      <IDSymbol name="cmdidTransportCombo" value="0x103"/>
-      <IDSymbol name="cmdidTransportComboGetList" value="0x104"/>
+      <IDSymbol name="cmdidAttach" value="0x0100" />
+      <IDSymbol name="cmdidTransportCombo" value="0x101"/>
+      <IDSymbol name="cmdidTransportComboGetList" value="0x102"/>
+      <IDSymbol name="cmdidQualifierCombo" value="0x103"/>
+      <IDSymbol name="cmdidProcessesCombo" value="0x104"/>
+      <IDSymbol name="cmdidProcessesComboGetList" value="0x105"/>
 
     </GuidSymbol>
     

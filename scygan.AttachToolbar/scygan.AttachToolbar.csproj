@@ -109,9 +109,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneralOptionsPage.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Guids.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>

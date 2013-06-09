@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-  <Identifier Id="798F2CAB-410B-4AAF-8B4E-90E418086F30">
+  <Identifier Id="AttachToolbar">
     <Name>AttachToolbar</Name>
     <Author>Slawomir Cygan</Author>
     <Version>1.0.1</Version>
