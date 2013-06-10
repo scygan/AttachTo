@@ -47,13 +47,27 @@ namespace scygan.AttachToolbar {
                 mcs.AddCommand(comboGetListCommand);
             }
 
-            //"Qualified combobox"
+            //"Qualifier" combobox"
             {
                 OleMenuCommand comboCommand =
                     new OleMenuCommand(new EventHandler(OnQualifierCombo), new CommandID(GuidList.guidAttachToCmdSet,
                     (int)PkgCmdIDList.cmdidQualifierCombo));
                 comboCommand.ParametersDescription = "$";
                 mcs.AddCommand(comboCommand);
+            }
+
+            //"Process" combobox
+            {
+                OleMenuCommand comboCommand =
+                    new OleMenuCommand(new EventHandler(OnProcessCombo), new CommandID(GuidList.guidAttachToCmdSet,
+                    (int)PkgCmdIDList.cmdidProcessesCombo));
+                comboCommand.ParametersDescription = "$";
+                mcs.AddCommand(comboCommand);
+            
+                MenuCommand comboGetListCommand =
+                    new OleMenuCommand(new EventHandler(OnProcessComboGetList),
+                    new CommandID(GuidList.guidAttachToCmdSet, (int)PkgCmdIDList.cmdidProcessesComboGetList));
+                mcs.AddCommand(comboGetListCommand);
             }
 
 
@@ -80,7 +94,7 @@ namespace scygan.AttachToolbar {
                 Process process = null;
 
                 try {
-                    process = processes.Item("notepad.exe");
+                    process = processes.Item(m_ProcessName);
                 } catch (System.ArgumentException) {
                     throw (new System.Exception(Resources.ProcessNameNotFound));
                 }
@@ -94,8 +108,11 @@ namespace scygan.AttachToolbar {
 
 
         private List<Transport> m_Transports = new List<Transport>();
-        Transport m_Transport = null;
-        string m_Qualifier = "";
+        private Transport m_Transport = null;
+        private string m_Qualifier = "";
+        private List<string> m_ProcessNames = new List<string>();
+        private string m_ProcessName;
+        
 
         private void OnTransportCombo(object sender, EventArgs e) {
             if (e == EventArgs.Empty) {
@@ -107,7 +124,7 @@ namespace scygan.AttachToolbar {
                 throw (new ArgumentException(Resources.EventArgsRequired));
             }
 
-            if (eventArgs.InValue == null && eventArgs.OutValue != IntPtr.Zero) {
+            if (eventArgs.InValue == null && eventArgs.OutValue == IntPtr.Zero) {
                 throw (new ArgumentException(Resources.ParamNull));
             }
 
@@ -130,10 +147,7 @@ namespace scygan.AttachToolbar {
                     throw (new ArgumentNullException(Resources.ParamNotValidStringInList));
                 }
 
-                if (m_Transport != newTransport) {
-                    //TODO
-                    m_Transport = newTransport;
-                }
+                m_Transport = newTransport;
             }
 
             if (eventArgs.OutValue != IntPtr.Zero) {
@@ -151,7 +165,7 @@ namespace scygan.AttachToolbar {
                 throw (new ArgumentException(Resources.EventArgsRequired));
             }
 
-            if (eventArgs.OutValue == null && eventArgs.OutValue == null) {
+            if (eventArgs.InValue == null && eventArgs.OutValue == IntPtr.Zero) {
                 throw (new ArgumentException(Resources.ParamNull));
             }
 
@@ -193,6 +207,84 @@ namespace scygan.AttachToolbar {
                     transportNames.Add(t.Name);
                 }
                 Marshal.GetNativeVariantForObject(transportNames.ToArray(), eventArgs.OutValue);
+            }
+        }
+                       
+        private void OnProcessCombo(object sender, EventArgs e)
+        {
+            if (e == EventArgs.Empty)
+            {
+                throw (new ArgumentException(Resources.EventArgsRequired));
+            }
+            OleMenuCmdEventArgs eventArgs = e as OleMenuCmdEventArgs;
+
+            if (eventArgs == null)
+            {
+                throw (new ArgumentException(Resources.EventArgsRequired));
+            }
+
+            if (eventArgs.InValue == null && eventArgs.OutValue == IntPtr.Zero)
+            {
+                throw (new ArgumentException(Resources.ParamNull));
+            }
+
+            if (eventArgs.InValue != null)
+            {
+
+                string newChoice = eventArgs.InValue as string;
+                if (newChoice == null)
+                {
+                    throw (new ArgumentException(Resources.ParamIllegal));
+                }
+
+                foreach (string s in m_ProcessNames)
+                {
+                    if (s.Equals(newChoice))
+                    {
+                        m_ProcessName = s;
+                        break;
+                    }
+                }
+            }
+
+            if (eventArgs.OutValue != IntPtr.Zero)
+            {
+                Marshal.GetNativeVariantForObject(m_ProcessName, eventArgs.OutValue);
+            }
+        }
+
+
+        private void OnProcessComboGetList(object sender, EventArgs e)
+        {
+            if ((null == e) || (e == EventArgs.Empty))
+            {
+                // --- We should never get here; EventArgs are required.
+                throw (new ArgumentNullException(Resources.EventArgsRequired));
+            }
+            OleMenuCmdEventArgs eventArgs = e as OleMenuCmdEventArgs;
+
+            if (eventArgs == null)
+            {
+                throw (new ArgumentException(Resources.EventArgsRequired));
+            }
+
+            if (eventArgs.InValue != null)
+            {
+                throw (new ArgumentException(Resources.ParamNull));
+            }
+
+            if (eventArgs.OutValue != IntPtr.Zero)
+            {
+                DTE dte = (DTE)this.GetService(typeof(DTE));
+                Debugger2 debugger = dte.Debugger as Debugger2;
+                Processes processes = debugger.GetProcesses(m_Transport, m_Qualifier);
+
+                m_ProcessNames.Clear();
+                foreach (Process p in processes)
+                {
+                    m_ProcessNames.Add(p.Name);
+                }
+                Marshal.GetNativeVariantForObject(m_ProcessNames.ToArray(), eventArgs.OutValue);
             }
         }
 

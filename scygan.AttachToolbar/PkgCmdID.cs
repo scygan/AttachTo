@@ -10,5 +10,9 @@ namespace scygan.AttachToolbar {
         public const uint cmdidTransportComboGetList = 0x102;
 
         public const uint cmdidQualifierCombo = 0x103;
+
+        public const uint cmdidProcessesCombo = 0x104;
+
+        public const uint cmdidProcessesComboGetList = 0x105;
     }
 }
