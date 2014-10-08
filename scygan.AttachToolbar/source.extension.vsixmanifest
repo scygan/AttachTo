@@ -3,8 +3,8 @@
   <Identifier Id="AttachToolbar">
     <Name>AttachToolbar</Name>
     <Author>Slawomir Cygan</Author>
-    <Version>1.0.1</Version>
-    <Description xml:space="preserve">Adds "Attach to IIS/IIS Express/NUnit" commands to Tools menu. Every command can be hidden or assigned shortcut.</Description>
+    <Version>1.1.0</Version>
+    <Description xml:space="preserve">Adds "AttachToolbar", a quick "Debug > Attach to process" replacement.</Description>
     <Locale>1033</Locale>
     <MoreInfoUrl>https://github.com/scygan/AttachToolbar</MoreInfoUrl>
     <License>license.txt</License>
@@ -16,6 +16,9 @@
         <Edition>Pro</Edition>
       </VisualStudio>
       <VisualStudio Version="11.0">
+        <Edition>Pro</Edition>
+      </VisualStudio>
+      <VisualStudio Version="12.0">
         <Edition>Pro</Edition>
       </VisualStudio>
     </SupportedProducts>

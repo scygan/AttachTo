@@ -15,25 +15,25 @@
         defining some of the constants that we will use inside the file. -->
 
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
-  <Extern href="stdidcmd.h"/>
+  <Extern href="stdidcmd.h" />
 
   <!--This header contains the command ids for the menus provided by the shell. -->
-  <Extern href="vsshlids.h"/>
+  <Extern href="vsshlids.h" />
 
   <!--Definition of some VSCT specific constants. In this sample we use it for the IDs inside the guidOfficeIcon group. -->
-  <Extern href="msobtnid.h"/>
+  <!--<Extern href="msobtnid.h" xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" />-->
 
   <!--The Commands section is where we the commands, menus and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
   <Commands package="guidAttachToPkg">
 
     <Menus>
-      <Menu guid="guidAttachToolbarCmdSet" id="Toolbar" type="Toolbar" priority="0x0010" >
-        <Parent guid="guidAttachToolbarCmdSet" id="0"/>
+      <Menu guid="guidAttachToolbarCmdSet" id="Toolbar" type="Toolbar" priority="0x0010">
+        <Parent guid="guidAttachToolbarCmdSet" id="0" />
         <CommandFlag>DefaultDocked</CommandFlag>
         <Strings>
-          <ButtonText>Attach To... </ButtonText>
-          <CommandName>Attach To... </CommandName>
+          <ButtonText>Attach Toolbar</ButtonText>
+          <CommandName>Attach Toolbar</CommandName>
         </Strings>
       </Menu>
     </Menus>
@@ -53,7 +53,7 @@
     <Groups>
 
       <Group guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" priority="0x0000">
-        <Parent guid="guidAttachToolbarCmdSet" id="Toolbar"/>
+        <Parent guid="guidAttachToolbarCmdSet" id="Toolbar" />
       </Group>
       
     </Groups>
@@ -61,22 +61,20 @@
 
     <Combos>
 
-      <Combo guid="guidAttachToolbarCmdSet" id="cmdidTransportCombo" priority="0x0010" type="DropDownCombo"
-        defaultWidth="130" idCommandList="cmdidTransportComboGetList">
+      <Combo guid="guidAttachToolbarCmdSet" id="cmdidTransportCombo" priority="0x0010" type="DropDownCombo" defaultWidth="130" idCommandList="cmdidTransportComboGetList">
         <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <CommandFlag>IconAndText</CommandFlag>
         <CommandFlag>CommandWellOnly</CommandFlag>
         <Strings>
           <MenuText>Transport: </MenuText>
-          <ButtonText>Transport(1)</ButtonText>
+          <ButtonText>Transport: </ButtonText>
           <ToolTipText>Select transport string</ToolTipText>
           <CanonicalName>Transport Combo</CanonicalName>
           <CommandName>Transport Combo</CommandName>
         </Strings>
       </Combo>
 
-      <Combo guid="guidAttachToolbarCmdSet" id="cmdidQualifierCombo" priority="0x0010" type="MRUCombo"
-       defaultWidth="130" idCommandList="0">
+      <Combo guid="guidAttachToolbarCmdSet" id="cmdidQualifierCombo" priority="0x0010" type="MRUCombo" defaultWidth="130" idCommandList="0">
         <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <CommandFlag>IconAndText</CommandFlag>
         <CommandFlag>CommandWellOnly</CommandFlag>
@@ -84,21 +82,20 @@
         <CommandFlag>CaseSensitive</CommandFlag>
         <Strings>
           <MenuText>Qualifier: </MenuText>
-          <ButtonText>Qualifier</ButtonText>
+          <ButtonText>Qualifier: </ButtonText>
           <ToolTipText>Select qualifier string</ToolTipText>
           <CanonicalName>Qualifier Combo</CanonicalName>
           <CommandName>Qualifier Combo</CommandName>
         </Strings>
       </Combo>
 
-      <Combo guid="guidAttachToolbarCmdSet" id="cmdidProcessesCombo" priority="0x0010" type="DropDownCombo"
-       defaultWidth="130" idCommandList="cmdidProcessesComboGetList">
+      <Combo guid="guidAttachToolbarCmdSet" id="cmdidProcessesCombo" priority="0x0010" type="DropDownCombo" defaultWidth="130" idCommandList="cmdidProcessesComboGetList">
         <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
         <CommandFlag>IconAndText</CommandFlag>
         <CommandFlag>CommandWellOnly</CommandFlag>
         <Strings>
           <MenuText>Process: </MenuText>
-          <ButtonText>Process</ButtonText>
+          <ButtonText>Process: </ButtonText>
           <ToolTipText>Select or enter process name</ToolTipText>
           <CanonicalName>Process Combo</CanonicalName>
           <CommandName>Process Combo</CommandName>
@@ -121,7 +118,7 @@
           If you do not want an image next to your command, remove the Icon node or set it to <Icon guid="guidOfficeIcon" id="msotcidNoIcon" /> -->
       <Button guid="guidAttachToolbarCmdSet" id="cmdidAttach" priority="0x0100" type="Button">
         <Parent guid="guidAttachToolbarCmdSet" id="AttachToolbarGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPicAttach" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <CommandName>cmdidAttach</CommandName>
@@ -137,7 +134,7 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
             inside a button definition. An important aspect of this declaration is that the element id 
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\Images_32bit.bmp" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows"/>
+      <Bitmap guid="guidImages" href="Resources\Images_32bit.bmp" usedList="bmpPicAttach" />
     </Bitmaps>
   </Commands>
 
@@ -151,20 +148,16 @@
       <IDSymbol name="AttachToolbarGroup" value="0x1050" />
 
       <IDSymbol name="cmdidAttach" value="0x0100" />
-      <IDSymbol name="cmdidTransportCombo" value="0x101"/>
-      <IDSymbol name="cmdidTransportComboGetList" value="0x102"/>
-      <IDSymbol name="cmdidQualifierCombo" value="0x103"/>
-      <IDSymbol name="cmdidProcessesCombo" value="0x104"/>
-      <IDSymbol name="cmdidProcessesComboGetList" value="0x105"/>
+      <IDSymbol name="cmdidTransportCombo" value="0x101" />
+      <IDSymbol name="cmdidTransportComboGetList" value="0x102" />
+      <IDSymbol name="cmdidQualifierCombo" value="0x103" />
+      <IDSymbol name="cmdidProcessesCombo" value="0x104" />
+      <IDSymbol name="cmdidProcessesComboGetList" value="0x105" />
 
     </GuidSymbol>
     
-    <GuidSymbol name="guidImages" value="{7cecfc21-6262-422a-93dd-223db26a763c}" >
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
+    <GuidSymbol name="guidImages" value="{7cecfc21-6262-422a-93dd-223db26a763c}">
+      <IDSymbol name="bmpPicAttach" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
